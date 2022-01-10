@@ -1,0 +1,41 @@
+h1, h2, p, ul {
+    margin: 2px;
+}
+
+hr {
+    margin: 5px;
+}
+
+li {
+    line-height: 1.2;
+}
+
+body {
+    margin-left:200px;
+    margin-right:200px;
+}
+
+.header {
+    text-align: center;
+}
+
+.skills {
+    display: flex;
+    gap: 30px;
+}
+
+.left-column {
+    font-weight: bold;
+}
+
+.title {
+    display:flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.experiences-list {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
