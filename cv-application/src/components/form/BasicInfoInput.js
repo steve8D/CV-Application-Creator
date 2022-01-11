@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header() {
+function BasicInfoInput() {
     return (
     <div className="header">
         <h2>Basic Information</h2>
@@ -19,4 +19,4 @@ function Header() {
     )
 }
 
-export default Header;
+export default BasicInfoInput;

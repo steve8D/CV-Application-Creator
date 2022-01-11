@@ -5,7 +5,7 @@ function CV({ info }) {
     const contactInfo = `${info.email} | ${info.phoneNo}`
 
     return (
-    <div>
+    <div className="CV">
         <div className="header">
         <h1>{fullName}</h1>
         <p>{contactInfo}</p>
@@ -21,9 +21,9 @@ function CV({ info }) {
         </div>
         
         <div>
-            <p>C#, HTML, CSS, JavaScript, Java, Kotlin</p>
-            <p>JUnit, NUnit, Unity</p>
-            <p>SourceTree, JIRA, Git, Android Studio, VS Code, IntelliJ, Rider</p>      
+            <p>{`${info.programmingLanguages}`}</p>
+            <p>{`${info.frameWorks}`}</p>
+            <p>{`${info.developerTools}`}</p>      
         </div>
     </div>
     <hr />
@@ -57,8 +57,8 @@ quest board, and character creation screen using Unity UI tools.</li>
 
     <h2>Education</h2>
     <div className="title">
-        <p>University of British Columbia</p>
-        <p>May 2023 (Expected)</p>
+        <p>{info.university}</p>
+        <p>{info.graduationDate}</p>
     </div>
     
     <p>Bachelor of Science in Computer Science</p>  

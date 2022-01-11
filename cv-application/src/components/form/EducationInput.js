@@ -1,6 +1,6 @@
 import React from "react";
 
-function Education() {
+function EducationInput() {
     return (
         <>
             <h2>Education</h2>
@@ -16,4 +16,4 @@ function Education() {
     )
 }
 
-export default Education;
+export default EducationInput;

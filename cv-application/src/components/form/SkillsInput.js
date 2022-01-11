@@ -1,6 +1,6 @@
 import React from "react";
 
-const Skills = () => 
+const SkillsInput = () => 
 <div className="skills">
     <h2>Skills</h2>
     <label htmlFor="titleInput">Name of company/project</label>
@@ -11,4 +11,4 @@ const Skills = () =>
     <br />
 </div>
 
-export default Skills;
+export default SkillsInput;

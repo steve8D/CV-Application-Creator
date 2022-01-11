@@ -1,6 +1,6 @@
 import React from "react";
 
-function Experience() {
+function ExperienceInput() {
     return (
     <div>
         <h2>Experience</h2>
@@ -15,4 +15,4 @@ function Experience() {
     )
 }
 
-export default Experience;
+export default ExperienceInput;
