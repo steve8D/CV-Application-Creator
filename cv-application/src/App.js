@@ -3,7 +3,6 @@ import CV from './components/CV'
 import {useState} from 'react';
 
 function App() {
-  const info = {
   const placeHolderInfo = {
     firstName: 'Danny',
     lastName: 'Ngo',
@@ -34,7 +33,7 @@ function App() {
     ); 
   } 
   return (
-    <CV info={info}/>
+    <CV info={placeHolderInfo}/>
   ) 
 }
 
