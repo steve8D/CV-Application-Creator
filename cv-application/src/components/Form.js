@@ -8,6 +8,9 @@ function Form() {
     return (
         <div className="Form">
             <BasicInfoInput />
+            <EducationInput />
+            <ExperienceInput />
+            <SkillsInput />
         </div>
     )
 }

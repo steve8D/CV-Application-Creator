@@ -16,25 +16,32 @@ function App() {
     experiences:[]
   }
 
-  const [showCV, setShowCV] = useState(false);
+  const [showCV, setShowCV] = useState(true);
 
   const handleSubmit = () => {
     setShowCV(showCV => !showCV);
   }
 
-  if (!showCV) {
-    return (
-    <div className="App">
+  
+  return (
+  <div className="App">
+    {!showCV && (
+    <div>
       <Form />
       <br/>
+      <button onClick={handleSubmit}>See my resume!</button>
+      </div>
+    )}
+    
 
-      <button onSubmit={handleSubmit}>See my resume!</button>
-    </div>
-    ); 
-  } 
-  return (
-    <CV info={placeHolderInfo}/>
-  ) 
+    {showCV && (
+      <div>
+        <CV info={placeHolderInfo}/>
+        <button onClick={handleSubmit}>See my resume!</button>
+      </div>
+    )}
+  </div>
+  ); 
 }
 
 export default App;
