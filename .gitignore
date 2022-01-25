@@ -1,3 +1,5 @@
 cv-form/
 .git/
+package-lock.json
+node_modules/
 cv-application/node_modules/
