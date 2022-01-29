@@ -22,12 +22,11 @@ function App() {
     setShowCV(showCV => !showCV);
   }
 
-  
   return (
   <div className="App">
     {!showCV && (
     <div>
-      <Form />
+      <Form value={placeHolderInfo}/>
       <br/>
       <button onClick={handleSubmit}>See my resume!</button>
       </div>
@@ -37,7 +36,7 @@ function App() {
     {showCV && (
       <div>
         <CV info={placeHolderInfo}/>
-        <button onClick={handleSubmit}>See my resume!</button>
+        <button onClick={handleSubmit}>Go back</button>
       </div>
     )}
   </div>
