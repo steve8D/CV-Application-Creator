@@ -3,20 +3,26 @@ import CV from './components/CV'
 import {useState} from 'react';
 
 function App() {
-  const placeHolderInfo = {
+  const [info, setInfo] = useState({
     firstName: 'Danny',
     lastName: 'Ngo',
     email: 'danhngo80@gmail.com',
     phoneNo: 2369715540,
     university:'University of British Columbia',
+    degreeTitle:'BSc Computer Science',
     graduationDate:'May 2023',
     programmingLanguages: 'C#, HTML, CSS, JavaScript, Java, Kotlin',
     frameWorks: 'JUnit, NUnit, Unity',
     developerTools: 'SourceTree, JIRA, Git, Android Studio, VS Code, IntelliJ, Rider',
-    experiences:[]
+    experiences:[],
+    projects:[]
+  })
+
+  const handleInfoChange = (event) => {
+    setInfo(state => ({...state, [event.target.name]: event.target.value}));
   }
 
-  const [showCV, setShowCV] = useState(true);
+  const [showCV, setShowCV] = useState(false);
 
   const handleSubmit = () => {
     setShowCV(showCV => !showCV);
@@ -26,7 +32,7 @@ function App() {
   <div className="App">
     {!showCV && (
     <div>
-      <Form value={placeHolderInfo}/>
+      <Form info={info} onInputChange={handleInfoChange}/>
       <br/>
       <button onClick={handleSubmit}>See my resume!</button>
       </div>
@@ -35,7 +41,7 @@ function App() {
 
     {showCV && (
       <div>
-        <CV info={placeHolderInfo}/>
+        <CV info={info}/>
         <button onClick={handleSubmit}>Go back</button>
       </div>
     )}
