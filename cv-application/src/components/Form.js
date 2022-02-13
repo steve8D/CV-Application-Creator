@@ -20,7 +20,7 @@ const Form = ({info, onInputChange}) => {
             <Input id="graduationDate" name="graduationDate" value={info.graduationDate} onInputChange={onInputChange}>Graduation Date: </Input><br/>
 
             <h2>Experience</h2>
-            <ExperienceDataInput></ExperienceDataInput>
+            <ExperienceDataInput></ExperienceDataInput><br/>
 			<button onClick={onButtonClicked}>Add another job experience</button>
 
             {/* <h2>Project</h2>
@@ -32,8 +32,8 @@ const Form = ({info, onInputChange}) => {
 
             <h2>Technical Skills</h2>
             <Input id="programmingLanguages" name="programmingLanguages" value={info.programmingLanguages} onInputChange={onInputChange}>Programming Languages: </Input><br/> 
-            <Input id="frameworks" name="frameWorks" value={info.firstName} onInputChange={onInputChange}>Frameworks: </Input><br/>
-            <Input id="developerTools" name="developerTools" value={info.firstName} onInputChange={onInputChange}>Developer Tools: </Input><br/>
+            <Input id="frameworks" name="frameWorks" value={info.frameWorks} onInputChange={onInputChange}>Frameworks: </Input><br/>
+            <Input id="developerTools" name="developerTools" value={info.developerTools} onInputChange={onInputChange}>Developer Tools: </Input><br/>
         </div>
     )
 }

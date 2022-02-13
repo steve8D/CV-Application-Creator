@@ -2,41 +2,66 @@ import { useState } from "react";
 import Input from "./Input.js"
 import uniqid from "uniqid";
 
-const ExperienceDataInput = ({onButtonClicked}) => {
+const ExperienceDataInput = () => {
     const [experienceData, setExperienceData] = useState({
 		companyName: '',
 		title: '',
 		from: '',
 		to: '',
-		task: {
-			text: '', 
-			id: uniqid()
-      	},
-		tasks: [],
+		tasks: [{text: 'eating food', id:uniqid()}],
 	});
+	
+	const [taskData, setTaskData] = useState({
+		text: '', 
+		id: uniqid()
+	})
 
 	const handleInfoChange = (event) => {
-		setExperienceData(state => ({...state, [event.target.name]: event.target.value}));
+		let name = event.target.name;
+		let value = event.target.value;
+		
+		if (name === 'task') {
+			setTaskData({
+				text: value,
+				id: taskData.id
+			});
+		} else {
+			setExperienceData(experienceData => ({...experienceData, [name]: value}));
+		}
   	}
 
-	const onAddButton = () => {
+	const onAddButton = (e) => {
+		e.preventDefault();
 
+		let newTasksArray = [...experienceData.tasks, taskData];
+		setExperienceData(experienceData => ({...experienceData, tasks: newTasksArray}))
+
+		setTaskData({
+			text: '',
+			id: uniqid()
+		});
 	}
 
-	const onRemoveButton = () => {
-
+	const onRemoveButton = (e, id) => {
+		e.preventDefault();
 	}
 
     return (
 		<>
 			<Input id="companyName" name="companyName" value={experienceData.companyName} onInputChange={handleInfoChange}>Name of company/project: </Input><br/> 
-            <Input id="jobTitle" name="title" value={experienceData.title} onInputChange={handleInfoChange}>Title: </Input><br/><br/>   
-			<Input id="companyStartDate" type="date" name="from" value={experienceData.from} onInputChange={handleInfoChange}>From: </Input><br/><br/>   
-            <Input id="companyEndDate" type="date" name="to" value={experienceData.to} onInputChange={handleInfoChange}>To: </Input><br/><br/>   
-			<p>Bullet points</p>
-			<Input id="jobTitle" name="title" value={experienceData.title} onInputChange={handleInfoChange}>Title: </Input><br/><br/>   
-			<button onClick={onButtonClicked}>Add additional bullet point</button>
-			{experienceData.tasks.length !== 0 && <button onClick={onButtonClicked}>Add additional bullet point</button>}
+            <Input id="jobTitle" name="title" value={experienceData.title} onInputChange={handleInfoChange}>Title: </Input><br/>  
+			<Input id="companyStartDate" name="from" value={experienceData.from} onInputChange={handleInfoChange}>From: </Input><br/> 
+            <Input id="companyEndDate" name="to" value={experienceData.to} onInputChange={handleInfoChange}>To: </Input><br/>  
+			<p>Your tasks</p>
+			<ul>
+			{experienceData.tasks.map(task => (
+				<li key={task.id}>
+					<Input id="companyEndDate" name="task" onInputChange={handleInfoChange} includeLabel={false}></Input><br/>
+					<button onClick={onRemoveButton}>Remove bullet point</button>
+				</li>
+			))} 
+			</ul>
+			<button onClick={onAddButton}>Add additional bullet point</button>
 		</>
     )
 }
