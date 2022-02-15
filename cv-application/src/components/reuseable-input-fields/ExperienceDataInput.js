@@ -8,7 +8,7 @@ const ExperienceDataInput = () => {
 		title: '',
 		from: '',
 		to: '',
-		tasks: [{text: 'eating food', id:uniqid()}],
+		tasks: [],
 	});
 	
 	const [taskData, setTaskData] = useState({
@@ -16,14 +16,19 @@ const ExperienceDataInput = () => {
 		id: uniqid()
 	})
 
-	const handleInfoChange = (event) => {
-		let name = event.target.name;
-		let value = event.target.value;
+	const handleInfoChange = (id, e) => {
+		let name = e.target.name;
+		let value = e.target.value;
 		
 		if (name === 'task') {
-			setTaskData({
-				text: value,
-				id: taskData.id
+			setExperienceData(prevState => {
+				let newTasksList = prevState.tasks.map((task) => {
+					if (task.id === id) {
+						return { ...task, text: value}
+					}
+					return task;
+				})
+				return {...prevState, tasks: newTasksList}
 			});
 		} else {
 			setExperienceData(experienceData => ({...experienceData, [name]: value}));
@@ -32,18 +37,19 @@ const ExperienceDataInput = () => {
 
 	const onAddButton = (e) => {
 		e.preventDefault();
-
-		let newTasksArray = [...experienceData.tasks, taskData];
-		setExperienceData(experienceData => ({...experienceData, tasks: newTasksArray}))
-
-		setTaskData({
+		let newTasksArray = [...experienceData.tasks, {
 			text: '',
 			id: uniqid()
-		});
+		}];
+		console.log(newTasksArray)
+		setExperienceData(experienceData => ({...experienceData, tasks: newTasksArray}));
 	}
 
-	const onRemoveButton = (e, id) => {
+	const onRemoveButton = (id, e) => {
 		e.preventDefault();
+		let newTasksArray = [...experienceData.tasks].filter(task => task.id !== id);
+		console.log(newTasksArray);
+		setExperienceData(experienceData => ({...experienceData, tasks: newTasksArray}))
 	}
 
     return (
@@ -56,8 +62,8 @@ const ExperienceDataInput = () => {
 			<ul>
 			{experienceData.tasks.map(task => (
 				<li key={task.id}>
-					<Input id="companyEndDate" name="task" onInputChange={handleInfoChange} includeLabel={false}></Input><br/>
-					<button onClick={onRemoveButton}>Remove bullet point</button>
+					<Input name="task" onInputChange={e => handleInfoChange(task.id, e)} includeLabel={false}></Input><br/>
+					<button onClick={e => onRemoveButton(task.id, e)}>Remove bullet point</button>
 				</li>
 			))} 
 			</ul>
