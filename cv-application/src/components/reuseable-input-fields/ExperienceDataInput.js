@@ -17,6 +17,7 @@ const ExperienceDataInput = () => {
 	})
 
 	const handleInfoChange = (id, e) => {
+	const handleInfoChange = (e, id) => {
 		let name = e.target.name;
 		let value = e.target.value;
 		
@@ -62,7 +63,7 @@ const ExperienceDataInput = () => {
 			<ul>
 			{experienceData.tasks.map(task => (
 				<li key={task.id}>
-					<Input name="task" onInputChange={e => handleInfoChange(task.id, e)} includeLabel={false}></Input><br/>
+					<Input name="task" onInputChange={e => handleInfoChange(e, task.id)} includeLabel={false}></Input><br/>
 					<button onClick={e => onRemoveButton(task.id, e)}>Remove bullet point</button>
 				</li>
 			))} 
