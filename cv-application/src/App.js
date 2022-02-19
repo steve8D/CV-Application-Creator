@@ -15,14 +15,7 @@ function App() {
     programmingLanguages: 'C#, HTML, CSS, JavaScript, Java',
     frameWorks: 'JUnit, NUnit, Unity',
     developerTools: 'SourceTree, JIRA, Git, Android Studio, VS Code, IntelliJ, Rider',
-    experiences:[{
-      companyName: '',
-      title: '',
-      from: '',
-      to: '',
-      tasks: [],
-      id: uniqid()
-    }]
+    experiences:[]
   })
 
   const handleInfoChange = (event) => {
@@ -30,10 +23,11 @@ function App() {
   }
 
   const changeExperienceDetails = (newValue) => {
-    console.log(newValue)
+    // console.log(newValue)
   }
 
-  const addExperience = () => {
+  const addExperience = (e) => {
+    e.preventDefault();
     setInfo(prevState => {
       let newExperienceList = [...prevState.experiences, {
         companyName: '',
@@ -47,8 +41,10 @@ function App() {
     })
   }
 
-  const removeExperience = () => {
-    
+  const removeExperience = (e, id) => {
+    e.preventDefault();
+    let newExperienceList = [...info.experiences].filter(experience => experience.id !== id);
+		setInfo(prevState => ({...prevState, experiences: newExperienceList}))
   }
 
   const [showCV, setShowCV] = useState(false);

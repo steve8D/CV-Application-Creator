@@ -20,7 +20,7 @@ const Form = ({info, onInputChange, handleExperienceDetailsChange, handleExperie
             {info.experiences.map(experience => (
 				<React.Fragment key={experience.id}>
                     <ExperienceDataInput handleExperienceDetailsChange={handleExperienceDetailsChange}></ExperienceDataInput><br/>
-					<button onClick={e => handleExperienceRemove(e, experience.id)}>Remove bullet point</button>
+					<button onClick={e => handleExperienceRemove(e, experience.id)}>Remove experience</button><br/><br/>
 				</React.Fragment>
 			))} 
 			<button onClick={handleExperienceAdd}>Add another job experience</button>

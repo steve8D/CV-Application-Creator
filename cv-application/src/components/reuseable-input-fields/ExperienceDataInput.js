@@ -14,8 +14,7 @@ const ExperienceDataInput = ({handleExperienceDetailsChange, handleExperienceAdd
 	useEffect(() => {handleExperienceDetailsChange(experienceData)}, [experienceData])
 
 	const handleInfoChange = (e, id) => {
-		let name = e.target.name;
-		let value = e.target.value;
+		const {name, value} = e.target;
 		
 		if (name === 'task') {
 			setExperienceData(prevState => {
@@ -44,7 +43,6 @@ const ExperienceDataInput = ({handleExperienceDetailsChange, handleExperienceAdd
 	const onRemoveButton = (id, e) => {
 		e.preventDefault();
 		let newTasksArray = [...experienceData.tasks].filter(task => task.id !== id);
-		console.log(newTasksArray);
 		setExperienceData(experienceData => ({...experienceData, tasks: newTasksArray}))
 	}
 
