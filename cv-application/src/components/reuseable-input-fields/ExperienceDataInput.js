@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import Input from "./Input.js"
 import uniqid from "uniqid";
 
-const ExperienceDataInput = ({handleExperienceDetailsChange, handleExperienceAdd, handleExperienceRemove}) => {
+const ExperienceDataInput = ({id, handleExperienceDetailsChange}) => {
 	const [experienceData, setExperienceData] = useState({
 		companyName: '',
 		title: '',
 		from: '',
 		to: '',
 		tasks: [],
+		id: id
 	});
-
-	useEffect(() => {handleExperienceDetailsChange(experienceData)}, [experienceData])
 
 	const handleInfoChange = (e, id) => {
 		const {name, value} = e.target;
@@ -29,6 +28,7 @@ const ExperienceDataInput = ({handleExperienceDetailsChange, handleExperienceAdd
 		} else {
 			setExperienceData(experienceData => ({...experienceData, [name]: value}));
 		}
+		handleExperienceDetailsChange(experienceData)
   	}
 
 	const onAddButton = (e) => {

@@ -22,8 +22,13 @@ function App() {
     setInfo(prevState => ({...prevState, [event.target.name]: event.target.value}));
   }
 
-  const changeExperienceDetails = (newValue) => {
-    // console.log(newValue)
+  const changeExperienceDetails = (newValue) => {   
+    let newExperienceList = [...info.experiences];
+    for (let experience of newExperienceList) {
+      if (experience.id === newValue.id) {
+        console.log( experience.id + ' ' + newValue.id)
+      }
+    }
   }
 
   const addExperience = (e) => {
