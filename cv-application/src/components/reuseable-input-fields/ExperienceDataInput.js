@@ -1,22 +1,18 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "./Input.js"
 import uniqid from "uniqid";
 
-const ExperienceDataInput = () => {
-    const [experienceData, setExperienceData] = useState({
+const ExperienceDataInput = ({handleExperienceDetailsChange, handleExperienceAdd, handleExperienceRemove}) => {
+	const [experienceData, setExperienceData] = useState({
 		companyName: '',
 		title: '',
 		from: '',
 		to: '',
 		tasks: [],
 	});
-	
-	const [taskData, setTaskData] = useState({
-		text: '', 
-		id: uniqid()
-	})
 
-	const handleInfoChange = (id, e) => {
+	useEffect(() => {handleExperienceDetailsChange(experienceData)}, [experienceData])
+
 	const handleInfoChange = (e, id) => {
 		let name = e.target.name;
 		let value = e.target.value;
@@ -42,7 +38,6 @@ const ExperienceDataInput = () => {
 			text: '',
 			id: uniqid()
 		}];
-		console.log(newTasksArray)
 		setExperienceData(experienceData => ({...experienceData, tasks: newTasksArray}));
 	}
 
@@ -55,7 +50,7 @@ const ExperienceDataInput = () => {
 
     return (
 		<>
-			<Input id="companyName" name="companyName" value={experienceData.companyName} onInputChange={handleInfoChange}>Name of company/project: </Input><br/> 
+			<Input id="companyName" name="companyName" value={experienceData.companyName} onInputChange={e => handleInfoChange(e)}>Name of company/project: </Input><br/> 
             <Input id="jobTitle" name="title" value={experienceData.title} onInputChange={handleInfoChange}>Title: </Input><br/>  
 			<Input id="companyStartDate" name="from" value={experienceData.from} onInputChange={handleInfoChange}>From: </Input><br/> 
             <Input id="companyEndDate" name="to" value={experienceData.to} onInputChange={handleInfoChange}>To: </Input><br/>  

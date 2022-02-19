@@ -1,6 +1,7 @@
 import Form from './components/Form'
 import CV from './components/CV'
 import {useState} from 'react';
+import uniqid from "uniqid";
 
 function App() {
   const [info, setInfo] = useState({
@@ -11,15 +12,43 @@ function App() {
     university:'University of British Columbia',
     degreeTitle:'BSc Computer Science',
     graduationDate:'May 2023',
-    programmingLanguages: 'C#, HTML, CSS, JavaScript, Java, Kotlin',
+    programmingLanguages: 'C#, HTML, CSS, JavaScript, Java',
     frameWorks: 'JUnit, NUnit, Unity',
     developerTools: 'SourceTree, JIRA, Git, Android Studio, VS Code, IntelliJ, Rider',
-    experiences:[],
-    projects:[]
+    experiences:[{
+      companyName: '',
+      title: '',
+      from: '',
+      to: '',
+      tasks: [],
+      id: uniqid()
+    }]
   })
 
   const handleInfoChange = (event) => {
-    setInfo(state => ({...state, [event.target.name]: event.target.value}));
+    setInfo(prevState => ({...prevState, [event.target.name]: event.target.value}));
+  }
+
+  const changeExperienceDetails = (newValue) => {
+    console.log(newValue)
+  }
+
+  const addExperience = () => {
+    setInfo(prevState => {
+      let newExperienceList = [...prevState.experiences, {
+        companyName: '',
+        title: '',
+        from: '',
+        to: '',
+        tasks: [],
+        id: uniqid()
+      }]
+      return {...prevState, experiences: newExperienceList}
+    })
+  }
+
+  const removeExperience = () => {
+    
   }
 
   const [showCV, setShowCV] = useState(false);
@@ -32,7 +61,7 @@ function App() {
   <div className="App">
     {!showCV && (
     <div>
-      <Form info={info} onInputChange={handleInfoChange}/>
+      <Form info={info} onInputChange={handleInfoChange} handleExperienceDetailsChange={changeExperienceDetails} handleExperienceAdd={addExperience} handleExperienceRemove={removeExperience}/>
       <br/>
       <button onClick={handleSubmit}>See my resume!</button>
       </div>
