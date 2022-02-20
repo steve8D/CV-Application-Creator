@@ -1,12 +1,5 @@
 import React from "react";
 
-// const eduComponents = educationIds.map((id) => (
-	// 	<EducationSection key={id} id={id} handleDelete={handleDelete} />
-	// ));
-	// const expComponents = experienceIds.map((id) => (
-	// 	<ExpirienceSection key={id} id={id} handleDelete={handleDelete} />
-// ));
-
 function CV ({ info }) {
     const fullName = `${info.firstName} ${info.lastName}`
     const contactInfo = `${info.email} | ${info.phoneNo}`
