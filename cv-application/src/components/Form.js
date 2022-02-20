@@ -1,36 +1,34 @@
-import Input from "./Input.js";
+import React from "react";
+import Input from "./reuseable-input-fields/Input.js";
+import ExperienceDataInput from "./reuseable-input-fields/ExperienceDataInput.js";
 
-const Form = () => {
+const Form = ({info, onInputChange, handleExperienceDetailsChange, handleExperienceAdd, handleExperienceRemove}) => {
     return (
         <div className="Form">
             <h2>Basic Information</h2>
-            <Input id="firstName">First Name: </Input><br/> 
-            <Input id="lastName">Last Name: </Input><br/>   
-            <Input id="email">Email: </Input><br/>   
-            <Input id="phoneNo">Phone Number: </Input><br/>
+            <Input id="firstName" name="firstName" value={info.firstName} onInputChange={onInputChange}>First Name: </Input><br/> 
+            <Input id="lastName" name="lastName" value={info.lastName} onInputChange={onInputChange}>Last Name: </Input><br/>   
+            <Input id="email" name="email" value={info.email} onInputChange={onInputChange}>Email: </Input><br/>   
+            <Input id="phoneNo" name="phoneNo" value={info.phoneNo} onInputChange={onInputChange}>Phone Number: </Input><br/>
 
             <h2>Education</h2>
-            <Input id="school">School: </Input><br/> 
-            <Input id="degreeTitle">Degree and Major: </Input><br/>   
-            <Input id="gradDate">Graduation Date: </Input><br/>
+            <Input id="university" name="university" value={info.university} onInputChange={onInputChange}>School: </Input><br/> 
+            <Input id="degreeTitle" name="degreeTitle" value={info.degreeTitle} onInputChange={onInputChange}>Degree and Major: </Input><br/>   
+            <Input id="graduationDate" name="graduationDate" value={info.graduationDate} onInputChange={onInputChange}>Graduation Date: </Input><br/>
 
             <h2>Experience</h2>
-            <Input id="companyName">Name of company/project: </Input><br/> 
-            <Input id="companyTitle">Title: </Input><br/><br/>   
-            <button type="button">Add another job experience</button>
-
-            <h2>Project</h2>
-            <Input id="projectName">Name of project: </Input><br/> 
-            <p>Description: </p>
-            <li><Input></Input></li><br/>
-            <button type="button">Add another bullet point</button><br/>
-            <br/>
-            <button type="button">Add another project</button>
+            {info.experiences.map(experience => (
+				<React.Fragment key={experience.id}>
+                    <ExperienceDataInput id={experience.id} handleExperienceDetailsChange={e => handleExperienceDetailsChange(e, experience.id)}></ExperienceDataInput><br/>
+					<button onClick={e => handleExperienceRemove(e, experience.id)}>Remove experience</button><br/><br/>
+				</React.Fragment>
+			))} 
+			<button onClick={handleExperienceAdd}>Add another job experience</button>
 
             <h2>Technical Skills</h2>
-            <Input id="programmingLanguages">Programming Languages: </Input><br/> 
-            <Input id="frameworks">Frameworks: </Input><br/>
-            <Input id="developerTools">Developer Tools: </Input><br/>
+            <Input id="programmingLanguages" name="programmingLanguages" value={info.programmingLanguages} onInputChange={onInputChange}>Programming Languages: </Input><br/> 
+            <Input id="frameworks" name="frameWorks" value={info.frameWorks} onInputChange={onInputChange}>Frameworks: </Input><br/>
+            <Input id="developerTools" name="developerTools" value={info.developerTools} onInputChange={onInputChange}>Developer Tools: </Input><br/>
         </div>
     )
 }

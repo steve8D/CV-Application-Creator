@@ -1,6 +1,6 @@
 import React from "react";
 
-function CV({ info }) {
+function CV ({ info }) {
     const fullName = `${info.firstName} ${info.lastName}`
     const contactInfo = `${info.email} | ${info.phoneNo}`
 
