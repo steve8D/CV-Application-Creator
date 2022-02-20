@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "./Input.js"
 import uniqid from "uniqid";
 
@@ -11,6 +11,8 @@ const ExperienceDataInput = ({id, handleExperienceDetailsChange}) => {
 		tasks: [],
 		id: id
 	});
+
+	useEffect(() => handleExperienceDetailsChange(experienceData), [experienceData])
 
 	const handleInfoChange = (e, id) => {
 		const {name, value} = e.target;
@@ -28,7 +30,6 @@ const ExperienceDataInput = ({id, handleExperienceDetailsChange}) => {
 		} else {
 			setExperienceData(experienceData => ({...experienceData, [name]: value}));
 		}
-		handleExperienceDetailsChange(experienceData)
   	}
 
 	const onAddButton = (e) => {

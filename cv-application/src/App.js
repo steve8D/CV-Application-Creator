@@ -5,16 +5,16 @@ import uniqid from "uniqid";
 
 function App() {
   const [info, setInfo] = useState({
-    firstName: 'Danny',
-    lastName: 'Ngo',
-    email: 'danhngo80@gmail.com',
-    phoneNo: 2369715540,
-    university:'University of British Columbia',
-    degreeTitle:'BSc Computer Science',
-    graduationDate:'May 2023',
-    programmingLanguages: 'C#, HTML, CSS, JavaScript, Java',
-    frameWorks: 'JUnit, NUnit, Unity',
-    developerTools: 'SourceTree, JIRA, Git, Android Studio, VS Code, IntelliJ, Rider',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNo: '',
+    university:'',
+    degreeTitle:'',
+    graduationDate:'',
+    programmingLanguages: '',
+    frameWorks: '',
+    developerTools: '',
     experiences:[]
   })
 
@@ -22,13 +22,15 @@ function App() {
     setInfo(prevState => ({...prevState, [event.target.name]: event.target.value}));
   }
 
-  const changeExperienceDetails = (newValue) => {   
+  const changeExperienceDetails = (newValue) => {
     let newExperienceList = [...info.experiences];
-    for (let experience of newExperienceList) {
+    newExperienceList = newExperienceList.map((experience) => {
       if (experience.id === newValue.id) {
-        console.log( experience.id + ' ' + newValue.id)
+        experience = {...newValue};
       }
-    }
+      return experience;
+    })
+    setInfo(prevState => ({...prevState, experiences: newExperienceList}))
   }
 
   const addExperience = (e) => {
@@ -68,7 +70,6 @@ function App() {
       </div>
     )}
     
-
     {showCV && (
       <div>
         <CV info={info}/>
