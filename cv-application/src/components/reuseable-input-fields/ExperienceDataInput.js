@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import Input from "./Input.js"
 import uniqid from "uniqid";
 
-const ExperienceDataInput = ({id, handleExperienceDetailsChange}) => {
+const ExperienceDataInput = ({experienceDetails, handleExperienceDetailsChange}) => {
 	const [experienceData, setExperienceData] = useState({
-		companyName: '',
-		title: '',
-		from: '',
-		to: '',
-		tasks: [],
-		id: id
+		companyName: experienceDetails.companyName,
+		title: experienceDetails.title,
+		from: experienceDetails.from,
+		to: experienceDetails.to,
+		tasks: experienceDetails.tasks? experienceDetails.tasks: [],
+		id: experienceDetails.id
 	});
 
 	useEffect(() => handleExperienceDetailsChange(experienceData), [experienceData])
@@ -57,7 +57,7 @@ const ExperienceDataInput = ({id, handleExperienceDetailsChange}) => {
 			<ul>
 			{experienceData.tasks.map(task => (
 				<li key={task.id}>
-					<Input name="task" onInputChange={e => handleInfoChange(e, task.id)} includeLabel={false}></Input><br/>
+					<Input name="task" value={task.text} onInputChange={e => handleInfoChange(e, task.id)} includeLabel={false}></Input><br/>
 					<button onClick={e => onRemoveButton(task.id, e)}>Remove bullet point</button>
 				</li>
 			))} 
