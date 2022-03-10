@@ -1,6 +1,8 @@
 import React from "react";
 import Input from "./reuseable-input-fields/Input.js";
 import ExperienceDataInput from "./reuseable-input-fields/ExperienceDataInput.js";
+import Button from "@mui/material/Button";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Form = ({info, onInputChange, handleExperienceDetailsChange, handleExperienceAdd, handleExperienceRemove}) => {
     return (
@@ -14,16 +16,16 @@ const Form = ({info, onInputChange, handleExperienceDetailsChange, handleExperie
             <h2>Education</h2>
             <Input id="university" name="university" value={info.university} onInputChange={onInputChange}>School: </Input><br/> 
             <Input id="degreeTitle" name="degreeTitle" value={info.degreeTitle} onInputChange={onInputChange}>Degree and Major: </Input><br/>   
-            <Input id="graduationDate" name="graduationDate" value={info.graduationDate} onInputChange={onInputChange}>Graduation Date: </Input><br/>
+            <Input id="graduationDate" name="graduationDate" value={info.graduationDate} onInputChange={onInputChange}>Graduation Date: </Input>
 
             <h2>Experience</h2>
             {info.experiences.map(experience => (
 				<React.Fragment key={experience.id}>
-                    <ExperienceDataInput experienceDetails={experience} handleExperienceDetailsChange={e => handleExperienceDetailsChange(e, experience.id)}></ExperienceDataInput><br/>
-					<button onClick={e => handleExperienceRemove(e, experience.id)}>Remove experience</button><br/><br/>
+                    <ExperienceDataInput experienceDetails={experience} handleExperienceDetailsChange={e => handleExperienceDetailsChange(e, experience.id)}></ExperienceDataInput>
+					<Button variant="outlined" startIcon={<DeleteIcon />} onClick={e => handleExperienceRemove(e, experience.id)}>Remove experience</Button><br/>
 				</React.Fragment>
 			))} 
-			<button onClick={handleExperienceAdd}>Add another job experience</button>
+			<Button variant="contained" onClick={handleExperienceAdd}>Add another job experience</Button>
 
             <h2>Technical Skills</h2>
             <Input id="programmingLanguages" name="programmingLanguages" value={info.programmingLanguages} onInputChange={onInputChange}>Programming Languages: </Input><br/> 

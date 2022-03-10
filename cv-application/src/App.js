@@ -2,6 +2,7 @@ import Form from './components/Form'
 import CV from './components/CV'
 import {useState} from 'react';
 import uniqid from "uniqid";
+import Button from "@mui/material/Button";
 
 function App() {
   const [info, setInfo] = useState({
@@ -66,14 +67,14 @@ function App() {
     <div>
       <Form info={info} onInputChange={handleInfoChange} handleExperienceDetailsChange={changeExperienceDetails} handleExperienceAdd={addExperience} handleExperienceRemove={removeExperience}/>
       <br/>
-      <button onClick={handleSubmit}>See my resume!</button>
+      <Button variant="contained" color="primary" onClick={handleSubmit}>See my resume!</Button>
       </div>
     )}
     
     {showCV && (
       <div>
         <CV info={info}/>
-        <button onClick={handleSubmit}>Go back</button>
+        <Button variant="contained" color="primary" onClick={handleSubmit}>Go back</Button>
       </div>
     )}
   </div>
