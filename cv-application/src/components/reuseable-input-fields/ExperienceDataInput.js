@@ -52,25 +52,58 @@ const ExperienceDataInput = ({experienceDetails, handleExperienceDetailsChange})
 
     return (
 		<>
-			<Input id="companyName" name="companyName" value={experienceData.companyName} onInputChange={e => handleInfoChange(e)}>Name of company/project: </Input><br/> 
-            <Input id="jobTitle" name="title" value={experienceData.title} onInputChange={handleInfoChange}>Title: </Input><br/>  
-			<Input id="companyStartDate" name="from" value={experienceData.from} onInputChange={handleInfoChange}>From: </Input><br/> 
-            <Input id="companyEndDate" name="to" value={experienceData.to} onInputChange={handleInfoChange}>To: </Input>  
+			<Input 
+				id="companyName" 
+				name="companyName" 
+				value={experienceData.companyName} 
+				onInputChange={e => handleInfoChange(e)}>
+					Name of company/project: 
+			</Input><br/> 
+            <Input 
+				id="jobTitle" 
+				name="title" 
+				value={experienceData.title} 
+				onInputChange={handleInfoChange}>
+					Title: 
+			</Input><br/>  
+			<Input 
+				id="companyStartDate" 
+				name="from" 
+				value={experienceData.from} 
+				onInputChange={handleInfoChange}>
+					From: 
+			</Input><br/> 
+            <Input 
+				id="companyEndDate" 
+				name="to" 
+				value={experienceData.to} 
+				onInputChange={handleInfoChange}>
+					To: 
+			</Input>  
 			<p>Your tasks</p>
 			
 			<ul>
 				{experienceData.tasks.map((task, index) => (
-						<li key={task.id}>
-							<Input name="task" value={task.text} onInputChange={e => handleInfoChange(e, task.id)} includeLabel={false}></Input>
-							<IconButton aria-label="delete" onClick={e => onRemoveButton(task.id, e)}>
+					<li key={task.id}>
+						<Input 
+							name="task" 
+							value={task.text} 
+							onInputChange={e => handleInfoChange(e, task.id)} 
+							includeLabel={false}>
+						</Input>
+						<IconButton 
+							aria-label="delete" 
+							onClick={e => onRemoveButton(task.id, e)}>
 								<DeleteIcon />	
-							</IconButton>
-							{(index === experienceData.tasks.length-1)? <IconButton onClick={onAddButton}><AddIcon /></IconButton>: null}
-						</li>
+						</IconButton>
+						{(index === experienceData.tasks.length-1)? 
+							<IconButton onClick={onAddButton}><AddIcon /></IconButton>: null}
+					</li>
 				))}
 			</ul>
 			
-			{experienceData.tasks.length === 0? <ul><li><IconButton onClick={onAddButton}><AddIcon /></IconButton></li></ul>: null} 
+			{experienceData.tasks.length === 0? 
+				<ul><li><IconButton onClick={onAddButton}><AddIcon /></IconButton></li></ul>: null} 
 		</>
     )
 }

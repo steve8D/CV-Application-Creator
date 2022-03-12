@@ -65,7 +65,12 @@ function App() {
   <div className="App">
     {!showCV && (
     <div>
-      <Form info={info} onInputChange={handleInfoChange} handleExperienceDetailsChange={changeExperienceDetails} handleExperienceAdd={addExperience} handleExperienceRemove={removeExperience}/>
+      <Form 
+        info={info} 
+        onInputChange={handleInfoChange} 
+        handleExperienceDetailsChange={changeExperienceDetails} 
+        handleExperienceAdd={addExperience} 
+        handleExperienceRemove={removeExperience}/>
       <br/>
       <Button variant="contained" color="primary" onClick={handleSubmit}>See my resume!</Button>
       </div>
