@@ -3,6 +3,7 @@ import Input from "./reuseable-input-fields/Input.js";
 import ExperienceDataInput from "./reuseable-input-fields/ExperienceDataInput.js";
 import Button from "@mui/material/Button";
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 
 const Form = ({info, onInputChange, handleExperienceDetailsChange, handleExperienceAdd, handleExperienceRemove}) => {
     return (
@@ -22,10 +23,10 @@ const Form = ({info, onInputChange, handleExperienceDetailsChange, handleExperie
             {info.experiences.map(experience => (
 				<React.Fragment key={experience.id}>
                     <ExperienceDataInput experienceDetails={experience} handleExperienceDetailsChange={e => handleExperienceDetailsChange(e, experience.id)}></ExperienceDataInput>
-					<Button variant="outlined" startIcon={<DeleteIcon />} onClick={e => handleExperienceRemove(e, experience.id)}>Remove experience</Button><br/>
+					<Button variant="outlined" startIcon={<DeleteIcon />} onClick={e => handleExperienceRemove(e, experience.id)}>Remove experience section</Button><br/>
 				</React.Fragment>
 			))} 
-			<Button variant="contained" onClick={handleExperienceAdd}>Add another job experience</Button>
+			<Button variant="contained" startIcon={<AddIcon />} onClick={handleExperienceAdd}>Add another job experience</Button>
 
             <h2>Technical Skills</h2>
             <Input id="programmingLanguages" name="programmingLanguages" value={info.programmingLanguages} onInputChange={onInputChange}>Programming Languages: </Input><br/> 
