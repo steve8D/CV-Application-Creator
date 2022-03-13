@@ -59,7 +59,7 @@ const Form = ({
         value={info.university}
         onInputChange={onInputChange}
       >
-        School:{" "}
+        School
       </Input>
       <br />
       <Input
@@ -68,7 +68,7 @@ const Form = ({
         value={info.degreeTitle}
         onInputChange={onInputChange}
       >
-        Degree and Major:{" "}
+        Degree and Major
       </Input>
       <br />
       <Input
@@ -77,7 +77,7 @@ const Form = ({
         value={info.graduationDate}
         onInputChange={onInputChange}
       >
-        Graduation Date:{" "}
+        Graduation Date
       </Input>
 
       <h2>Experience</h2>
@@ -114,7 +114,7 @@ const Form = ({
         value={info.programmingLanguages}
         onInputChange={onInputChange}
       >
-        Programming Languages:{" "}
+        Programming Languages
       </Input>
       <br />
       <Input
@@ -123,7 +123,7 @@ const Form = ({
         value={info.frameWorks}
         onInputChange={onInputChange}
       >
-        Frameworks:{" "}
+        Frameworks
       </Input>
       <br />
       <Input
@@ -132,7 +132,7 @@ const Form = ({
         value={info.developerTools}
         onInputChange={onInputChange}
       >
-        Developer Tools:{" "}
+        Developer Tools
       </Input>
       <br />
     </div>

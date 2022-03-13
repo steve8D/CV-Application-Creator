@@ -1,20 +1,20 @@
 import React from "react";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 
-const Input = ({id, type="text", name, value, children, onInputChange, includeLabel = true}) => {
-    return (
+const Input = ({ id, type = "text", name, value, children, onInputChange }) => {
+  return (
     <>
-        {includeLabel && <><label htmlFor={id}>{children}</label><br/></>}
-        <TextField
+      <TextField
         variant="outlined"
-        type={type} 
-        name={name} 
-        id={id} 
+        type={type}
+        name={name}
+        id={id}
         value={value}
-        label={children} 
-        onChange={onInputChange}></TextField>
+        label={children}
+        onChange={onInputChange}
+      ></TextField>
     </>
-    )
-}
+  );
+};
 
 export default Input;
