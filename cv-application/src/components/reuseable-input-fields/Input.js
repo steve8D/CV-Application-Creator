@@ -12,6 +12,7 @@ const Input = ({ id, type = "text", name, value, children, onInputChange }) => {
         value={value}
         label={children}
         onChange={onInputChange}
+        style={{ width: 400 }}
       ></TextField>
     </>
   );
