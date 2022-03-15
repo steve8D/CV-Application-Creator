@@ -48,7 +48,7 @@ function App() {
           title: "",
           from: "",
           to: "",
-          tasks: [],
+          description: "",
           id: uniqid(),
         },
       ];
