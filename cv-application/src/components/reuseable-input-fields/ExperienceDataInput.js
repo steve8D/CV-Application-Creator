@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
 import Input from "./Input.js";
-import uniqid from "uniqid";
-import { IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddIcon from "@mui/icons-material/Add";
 import { Box } from "@mui/material";
 
 const ExperienceDataInput = ({
