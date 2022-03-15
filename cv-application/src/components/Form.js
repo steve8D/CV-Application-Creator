@@ -1,9 +1,9 @@
 import React from "react";
 import Input from "./reuseable-input-fields/Input.js";
 import ExperienceDataInput from "./reuseable-input-fields/ExperienceDataInput.js";
-import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
+import { Box, Button } from "@mui/material";
 
 const Form = ({
   info,
@@ -80,24 +80,26 @@ const Form = ({
         Graduation Date
       </Input>
 
-      <h2>Experience</h2>
-      {info.experiences.map((experience) => (
-        <React.Fragment key={experience.id}>
+      <h2>Experiences</h2>
+      {info.experiences.map((experience, i) => (
+        <Box key={experience.id} sx={{ mb: 4 }}>
+          <h3>Experience section {i + 1}</h3>
           <ExperienceDataInput
             experienceDetails={experience}
             handleExperienceDetailsChange={(e) =>
               handleExperienceDetailsChange(e, experience.id)
             }
           ></ExperienceDataInput>
+          <br />
           <Button
             variant="outlined"
             startIcon={<DeleteIcon />}
             onClick={(e) => handleExperienceRemove(e, experience.id)}
+            sx={{ width: "400px" }}
           >
             Remove experience section
           </Button>
-          <br />
-        </React.Fragment>
+        </Box>
       ))}
       <Button
         variant="contained"

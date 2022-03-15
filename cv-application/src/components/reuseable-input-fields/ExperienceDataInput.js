@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Input from "./Input.js";
-import { Box } from "@mui/material";
 
 const ExperienceDataInput = ({
   experienceDetails,
@@ -30,7 +29,7 @@ const ExperienceDataInput = ({
   };
 
   return (
-    <Box sx={{ textAlign: "center" }}>
+    <>
       <Input
         id="companyName"
         name="companyName"
@@ -75,7 +74,7 @@ const ExperienceDataInput = ({
       >
         Description
       </Input>
-    </Box>
+    </>
   );
 };
 
