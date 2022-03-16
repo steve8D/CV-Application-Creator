@@ -71,8 +71,9 @@ const ExperienceDataInput = ({
         name="description"
         value={experienceData.description}
         onInputChange={handleInfoChange}
+        minRows={4}
       >
-        Description
+        Main acitivities and responsibilities
       </Input>
     </>
   );

@@ -8,7 +8,7 @@ const ExperienceDetailsItem = ({ experienceInfo }) => {
         <p>{`${experienceInfo.from} - ${experienceInfo.to}`}</p>
       </div>
       <p>{experienceInfo.title}</p>
-      <p>{experienceInfo.desciption}</p>
+      <p>{experienceInfo.description}</p>
     </div>
   );
 };
