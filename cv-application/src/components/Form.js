@@ -14,8 +14,8 @@ const Form = ({
 }) => {
   return (
     <div className="form">
-      <h2>Basic Information</h2>
       <Box className="personal-info">
+        <h2>Basic Information</h2>
         <Input
           id="firstName"
           name="firstName"
@@ -53,8 +53,8 @@ const Form = ({
         </Input>
       </Box>
 
-      <h2>Education</h2>
       <Box className="education-info">
+        <h2>Education</h2>
         <Input
           id="university"
           name="university"
@@ -83,37 +83,43 @@ const Form = ({
         </Input>
       </Box>
 
-      <h2>Experiences</h2>
-      {info.experiences.map((experience, i) => (
-        <Box key={experience.id} sx={{ mb: 4 }} className="experience-details">
-          <h3>Experience section {i + 1}</h3>
-          <ExperienceDataInput
-            experienceDetails={experience}
-            handleExperienceDetailsChange={(e) =>
-              handleExperienceDetailsChange(e, experience.id)
-            }
-          ></ExperienceDataInput>
-          <br />
-          <Button
-            variant="outlined"
-            startIcon={<DeleteIcon />}
-            onClick={(e) => handleExperienceRemove(e, experience.id)}
-            sx={{ width: "400px" }}
+      <Box component="section">
+        <h2>Experiences</h2>
+        {info.experiences.map((experience, i) => (
+          <Box
+            key={experience.id}
+            sx={{ mb: 4 }}
+            className="experience-details"
           >
-            Remove experience section
-          </Button>
-        </Box>
-      ))}
-      <Button
-        variant="contained"
-        startIcon={<AddIcon />}
-        onClick={handleExperienceAdd}
-      >
-        Add another job experience
-      </Button>
+            <h3>Experience section {i + 1}</h3>
+            <ExperienceDataInput
+              experienceDetails={experience}
+              handleExperienceDetailsChange={(e) =>
+                handleExperienceDetailsChange(e, experience.id)
+              }
+            ></ExperienceDataInput>
+            <br />
+            <Button
+              variant="outlined"
+              startIcon={<DeleteIcon />}
+              onClick={(e) => handleExperienceRemove(e, experience.id)}
+              sx={{ width: "400px" }}
+            >
+              Remove experience section
+            </Button>
+          </Box>
+        ))}
+        <Button
+          variant="contained"
+          startIcon={<AddIcon />}
+          onClick={handleExperienceAdd}
+        >
+          Add another job experience
+        </Button>
+      </Box>
 
-      <h2>Technical Skills</h2>
       <Box className="technical-skills-info">
+        <h2>Technical Skills</h2>
         <Input
           id="programmingLanguages"
           name="programmingLanguages"
