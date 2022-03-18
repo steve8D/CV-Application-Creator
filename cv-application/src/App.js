@@ -7,24 +7,23 @@ import { Box } from "@mui/material";
 
 function App() {
   const [info, setInfo] = useState({
-    firstName: "Danny",
-    lastName: "Ngo",
-    email: "danhngo80@gmail.com",
-    phoneNo: "236-971-5540",
-    university: "University of British Columbia",
-    degreeTitle: "Bachelor of Science in Computer Science",
-    graduationDate: "May 2023 (Expected)",
-    programmingLanguages: "C#, HTML, CSS, JavaScript, Java, Kotlin",
-    frameWorks: "JUnit, NUnit, Unity",
-    developerTools:
-      "SourceTree, JIRA, Git, Android Studio, VS Code, IntelliJ, Rider",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNo: "",
+    university: "",
+    degreeTitle: "",
+    graduationDate: "",
+    programmingLanguages: "",
+    frameWorks: "",
+    developerTools: "",
     experiences: [
       {
-        companyName: "East Side Games Studio",
-        title: "Software Engineer - IdleKit",
-        from: "September 2021",
-        to: "May 2022",
-        description: "Refactored thousands of lines of legacy code",
+        companyName: "",
+        title: "",
+        from: "",
+        to: "",
+        description: "",
         id: uniqid(),
       },
     ],
@@ -74,7 +73,7 @@ function App() {
     setInfo((prevState) => ({ ...prevState, experiences: newExperienceList }));
   };
 
-  const [showCV, setShowCV] = useState(true);
+  const [showCV, setShowCV] = useState(false);
 
   const handleSubmit = () => {
     setShowCV((showCV) => !showCV);
