@@ -1,53 +1,70 @@
+import { Box, Typography } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React from "react";
 import ExperienceDetailsItem from "./reuseable-views/ExperienceDetailsItem";
+
+const theme = createTheme({
+  typography: {
+    allVariants: {
+      fontFamily: "serif",
+    },
+    h5: { fontWeight: "medium" },
+  },
+});
 
 function CV({ info }) {
   const fullName = `${info.firstName} ${info.lastName}`;
   const contactInfo = `${info.email} | ${info.phoneNo}`;
 
   return (
-    <div className="CV">
-      <div className="header">
-        <h1>{fullName}</h1>
-        <p>{contactInfo}</p>
-      </div>
-      <hr />
+    <ThemeProvider theme={theme}>
+      <Box sx={{ mx: "auto", width: "50%" }}>
+        <Box sx={{ textAlign: "center" }}>
+          <Typography variant="h3">{fullName}</Typography>
+          <Typography variant="body1">{contactInfo}</Typography>
+        </Box>
+        <hr />
 
-      <h2>Skills</h2>
-      <div className="skills">
-        <div className="left-column">
-          <p>Programming Languages</p>
-          <p>Frameworks</p>
-          <p>Developer Tools</p>
-        </div>
+        <Typography variant="h5">Skills</Typography>
+        <Box sx={{ display: "flex", gap: "30px" }}>
+          <Box sx={{ fontWeight: "bold" }}>
+            <Typography style={{ fontWeight: "bold" }}>
+              Programming Languages
+            </Typography>
+            <Typography style={{ fontWeight: "bold" }}>Frameworks</Typography>
+            <Typography style={{ fontWeight: "bold" }}>
+              Developer Tools
+            </Typography>
+          </Box>
 
-        <div>
-          <p>{info.programmingLanguages}</p>
-          <p>{info.frameWorks}</p>
-          <p>{info.developerTools}</p>
-        </div>
-      </div>
-      <hr />
+          <Box>
+            <Typography>{info.programmingLanguages}</Typography>
+            <Typography>{info.frameWorks}</Typography>
+            <Typography>{info.developerTools}</Typography>
+          </Box>
+        </Box>
+        <hr />
 
-      <h2>Work Experiences</h2>
-      <div className="experiences-list">
-        {info.experiences.map((experience) => (
-          <ExperienceDetailsItem
-            key={experience.id}
-            experienceInfo={experience}
-          ></ExperienceDetailsItem>
-        ))}
-      </div>
-      <hr />
+        <Typography variant="h5">Work Experiences</Typography>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          {info.experiences.map((experience) => (
+            <ExperienceDetailsItem
+              key={experience.id}
+              experienceInfo={experience}
+            ></ExperienceDetailsItem>
+          ))}
+        </Box>
+        <hr />
 
-      <h2>Education</h2>
-      <div className="title">
-        <p>{info.university}</p>
-        <p>{info.graduationDate}</p>
-      </div>
+        <Typography variant="h5">Education</Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography>{info.university}</Typography>
+          <Typography>{info.graduationDate}</Typography>
+        </Box>
 
-      <p>{info.degreeTitle}</p>
-    </div>
+        <Typography>{info.degreeTitle}</Typography>
+      </Box>
+    </ThemeProvider>
   );
 }
 

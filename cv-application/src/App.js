@@ -7,17 +7,27 @@ import { Box } from "@mui/material";
 
 function App() {
   const [info, setInfo] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNo: "",
-    university: "",
-    degreeTitle: "",
-    graduationDate: "",
-    programmingLanguages: "",
-    frameWorks: "",
-    developerTools: "",
-    experiences: [],
+    firstName: "Danny",
+    lastName: "Ngo",
+    email: "danhngo80@gmail.com",
+    phoneNo: "236-971-5540",
+    university: "University of British Columbia",
+    degreeTitle: "Bachelor of Science in Computer Science",
+    graduationDate: "May 2023 (Expected)",
+    programmingLanguages: "C#, HTML, CSS, JavaScript, Java, Kotlin",
+    frameWorks: "JUnit, NUnit, Unity",
+    developerTools:
+      "SourceTree, JIRA, Git, Android Studio, VS Code, IntelliJ, Rider",
+    experiences: [
+      {
+        companyName: "East Side Games Studio",
+        title: "Software Engineer - IdleKit",
+        from: "September 2021",
+        to: "May 2022",
+        description: "Refactored thousands of lines of legacy code",
+        id: uniqid(),
+      },
+    ],
   });
 
   const handleInfoChange = (event) => {
@@ -64,7 +74,7 @@ function App() {
     setInfo((prevState) => ({ ...prevState, experiences: newExperienceList }));
   };
 
-  const [showCV, setShowCV] = useState(false);
+  const [showCV, setShowCV] = useState(true);
 
   const handleSubmit = () => {
     setShowCV((showCV) => !showCV);
@@ -89,12 +99,14 @@ function App() {
       )}
 
       {showCV && (
-        <div>
+        <>
           <CV info={info} />
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
-            Go back
-          </Button>
-        </div>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Button variant="contained" color="primary" onClick={handleSubmit}>
+              Go back
+            </Button>
+          </Box>
+        </>
       )}
     </>
   );
