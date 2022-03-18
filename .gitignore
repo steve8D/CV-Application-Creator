@@ -1,8 +1,5 @@
 cv-form/
 .git/
-.vscode/
-tailwind.config.js
-dist/
 package-lock.json
 node_modules/
 cv-application/node_modules/
